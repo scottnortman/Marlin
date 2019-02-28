@@ -199,7 +199,7 @@
 #define USE_CONTROLLER_FAN // DaHai: I have this set to turn on the fan for my TMC2130s. 
 #if ENABLED(USE_CONTROLLER_FAN)
   #define CONTROLLER_FAN_PIN 7         // Set a custom pin for the controller fan
-  #define CONTROLLERFAN_SECS 60          // Duration in seconds for the fan to run after all motors are disabled
+  #define CONTROLLERFAN_SECS 45          // Duration in seconds for the fan to run after all motors are disabled
   #define CONTROLLERFAN_SPEED 255        // 255 == full speed
 #endif
 
@@ -380,7 +380,7 @@
 #define X_HOME_BUMP_MM 5
 #define Y_HOME_BUMP_MM 5
 #define Z_HOME_BUMP_MM 5 // deltas need the same for all three axes
-#define HOMING_BUMP_DIVISOR { 10, 10, 10 }  // Re-Bump Speed Divisor (Divides the Homing Feedrate)
+#define HOMING_BUMP_DIVISOR { 2, 2, 4 }  // Re-Bump Speed Divisor (Divides the Homing Feedrate)
 //#define QUICK_HOME                     // If homing includes X and Y, do a diagonal move initially
 
 // When G28 is called, this option will make Y home before X
@@ -809,7 +809,7 @@
 #endif
 
 // Moves (or segments) with fewer steps than this will be joined with the next move
-#define MIN_STEPS_PER_SEGMENT 4
+#define MIN_STEPS_PER_SEGMENT 6
 
 /**
  * Minimum delay after setting the stepper DIR (in ns)

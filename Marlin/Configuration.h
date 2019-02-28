@@ -74,10 +74,10 @@
 // User-specified version info of this build to display in [Pronterface, etc] terminal window during
 // startup. Implementation of an idea by Prof Braino to inform user that any changes made to this
 // build by the user have been successfully uploaded into firmware.
-#define STRING_CONFIG_H_AUTHOR "(DaHai, Auto Bed Level)" // Who made the changes. DaHai: Change if you wish - informational only
+#define STRING_CONFIG_H_AUTHOR "(Maviles798, Linear Plus)" // Who made the changes. DaHai: Change if you wish - informational only
 #define SHOW_BOOTSCREEN
 #define STRING_SPLASH_LINE1 "1.1.9" // will be shown during bootup in line 1
-#define STRING_SPLASH_LINE2 "DaHai Auto Bed Level"         // will be shown during bootup in line 2. DaHai - Change if you wish - informational only
+#define STRING_SPLASH_LINE2 "Maviles linear p"         // will be shown during bootup in line 2. DaHai - Change if you wish - informational only
 
 /**
  * *** VENDORS PLEASE READ ***
@@ -124,12 +124,12 @@
 // The following define selects which electronics board you have.
 // Please choose the name from boards.h that matches your setup
 #ifndef MOTHERBOARD
-  #define MOTHERBOARD BOARD_RAMPS_13_EFB // DaHai: This is from the original AnyCube source
+  #define MOTHERBOARD BOARD_RAMPS_14_EFB // DaHai: This is from the original AnyCube source
 #endif
 
 // Optional custom name for your RepStrap or other custom machine
 // Displayed in the LCD "Ready" message
-#define CUSTOM_MACHINE_NAME "Kossel" // DaHai: Name your printer whatever you wish
+#define CUSTOM_MACHINE_NAME "MANOLIN" // DaHai: Name your printer whatever you wish
 
 // Define this to set a unique identifier for this printer, (Used by some programs to differentiate between machines)
 // You can use an online service to generate a random UUID. (eg http://www.uuidgenerator.net/version4)
@@ -309,7 +309,7 @@
 #define TEMP_SENSOR_3 0
 #define TEMP_SENSOR_4 0
 #define TEMP_SENSOR_BED 1 // DaHai: This is taken from AnyCubic Kossel original firmware
-#define TEMP_SENSOR_CHAMBER 0
+#define TEMP_SENSOR_CHAMBER 1
 
 // Dummy thermistor constant temperature readings, for use with 998 and 999
 #define DUMMY_THERMISTOR_998_VALUE 25
@@ -541,24 +541,24 @@
 
   #if ENABLED(DELTA_AUTO_CALIBRATION) || ENABLED(DELTA_CALIBRATION_MENU)
     // Set the radius for the calibration probe points - max 0.9 * DELTA_PRINTABLE_RADIUS for non-eccentric probes
-    #define DELTA_CALIBRATION_RADIUS 78.0 // mm. DaHai: You can set larger, but beware it might run into the bed clamps
+    #define DELTA_CALIBRATION_RADIUS 100.0 // mm. DaHai: You can set larger, but beware it might run into the bed clamps
     // Set the steprate for papertest probing
     #define PROBE_MANUALLY_STEP 0.025 // DaHai: For Manual Bed Leveling (without probe)
   #endif
 
   // Print surface diameter/2 minus unreachable space (avoid collisions with vertical towers).
-  #define DELTA_PRINTABLE_RADIUS 90.0 // mm. DaHai: From Anycubic Kossle source
+  #define DELTA_PRINTABLE_RADIUS 110.0 // mm. DaHai: From Anycubic Kossle source
 
   // Center-to-center distance of the holes in the diagonal push rods.
-  #define DELTA_DIAGONAL_ROD 218.0 // mm. DaHai: From Anycubic Kossle source  
+  #define DELTA_DIAGONAL_ROD 271.50 // mm. DaHai: From Anycubic Kossle source  
 
   // height from z=0 to home position
-  #define DELTA_HEIGHT 334.88 // // mm. DaHai: This will be overriden and set in EEPROM when saving Auto Calibrate results
+  #define DELTA_HEIGHT 302.85 // // mm. DaHai: This will be overriden and set in EEPROM when saving Auto Calibrate results
 
   #define DELTA_ENDSTOP_ADJ { 0.0, 0.0, 0.0 } // get these from auto calibrate
 
   // Horizontal distance bridged by diagonal push rods when effector is centered.
-  #define DELTA_RADIUS 98.7 //mm. DaHai: This will be overriden and set in EEPROM when saving Auto Calibrate results
+  #define DELTA_RADIUS 133.22 //mm. DaHai: This will be overriden and set in EEPROM when saving Auto Calibrate results
 
   // Trim adjustments for individual towers
   // tower angle corrections for X and Y tower / rotate XYZ so Z tower angle = 0
@@ -621,9 +621,9 @@
  *          TMC5130, TMC5130_STANDALONE
  * :['A4988', 'DRV8825', 'LV8729', 'L6470', 'TB6560', 'TB6600', 'TMC2100', 'TMC2130', 'TMC2130_STANDALONE', 'TMC2208', 'TMC2208_STANDALONE', 'TMC26X', 'TMC26X_STANDALONE', 'TMC2660', 'TMC2660_STANDALONE', 'TMC5130', 'TMC5130_STANDALONE']
  */
-#define X_DRIVER_TYPE  TMC2130_STANDALONE // DaHai: I have TMC2130s installed on XYZ in Standalone (Dumb/non-SPI) -
-#define Y_DRIVER_TYPE  TMC2130_STANDALONE // DaHai: So change these values to the drivers you have on your AnyCubic Delta
-#define Z_DRIVER_TYPE  TMC2130_STANDALONE
+#define X_DRIVER_TYPE  A4988 // DaHai: I have TMC2130s installed on XYZ in Standalone (Dumb/non-SPI) -
+#define Y_DRIVER_TYPE  A4988 // DaHai: So change these values to the drivers you have on your AnyCubic Delta
+#define Z_DRIVER_TYPE  A4988
 #define X2_DRIVER_TYPE A4988
 #define Y2_DRIVER_TYPE A4988
 #define Z2_DRIVER_TYPE A4988
@@ -732,10 +732,10 @@
  * When changing speed and direction, if the difference is less than the
  * value set here, it may happen instantaneously.
  */
-#define DEFAULT_XJERK                 10.0          // DaHai: These Jerk settings worked well for me. Change if you wish
-#define DEFAULT_YJERK                 DEFAULT_XJERK // DaHai: Note that XYZ must all be the same!
-#define DEFAULT_ZJERK                 DEFAULT_XJERK // Must be same as XY for delta
-#define DEFAULT_EJERK                 10.0
+#define DEFAULT_XJERK                 5.0          // DaHai: These Jerk settings worked well for me. Change if you wish
+#define DEFAULT_YJERK                 5.0 // DaHai: Note that XYZ must all be the same!
+#define DEFAULT_ZJERK                 5.0 // Must be same as XY for delta
+#define DEFAULT_EJERK                 5.0
 
 /**
  * S-Curve Acceleration
@@ -865,7 +865,7 @@
  */
 #define X_PROBE_OFFSET_FROM_EXTRUDER 0     // X offset: -left  +right  [of the nozzle]
 #define Y_PROBE_OFFSET_FROM_EXTRUDER 0   // Y offset: -front +behind [the nozzle]
-#define Z_PROBE_OFFSET_FROM_EXTRUDER -14.55 // Z offset: -below +above  [the nozzle] - DaHai: For Type 2 Probe!!!
+#define Z_PROBE_OFFSET_FROM_EXTRUDER -15.9 // Z offset: -below +above  [the nozzle] - DaHai: For Type 2 Probe!!!
 
 // Certain types of probes need to stay away from edges
 #define MIN_PROBE_EDGE 10 // DaHai: Keeps the Probe Body from crashing into the bed clamps
@@ -906,7 +906,7 @@
 #define Z_PROBE_LOW_POINT          -2 // Farthest distance below the trigger-point to go before stopping
 
 // For M851 give a range for adjusting the Z probe offset
-#define Z_PROBE_OFFSET_RANGE_MIN -20
+#define Z_PROBE_OFFSET_RANGE_MIN -40
 #define Z_PROBE_OFFSET_RANGE_MAX 20
 
 // Enable the M48 repeatability test to test probe accuracy
@@ -935,9 +935,9 @@
 // @section machine
 
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
-#define INVERT_X_DIR false // DELTA does not invert - DaHai: For TMC2130, you need to reverse the motor connectors
-#define INVERT_Y_DIR false
-#define INVERT_Z_DIR false
+#define INVERT_X_DIR true // DELTA does not invert - DaHai: For TMC2130, you need to reverse the motor connectors
+#define INVERT_Y_DIR true
+#define INVERT_Z_DIR true
 
 // @section extruder
 
@@ -1125,7 +1125,7 @@
   #define BACK_PROBE_BED_POSITION DELTA_PRINTABLE_RADIUS -(MIN_PROBE_EDGE)
   
   // The Z probe minimum outer margin (to validate G29 parameters).
-  #define MIN_PROBE_EDGE 10
+  #define MIN_PROBE_EDGE 20
 
   // Probe along the Y axis, advancing X after each column
   //#define PROBE_Y_FIRST
@@ -1355,8 +1355,8 @@
 // @section temperature
 
 // Preheat Constants
-#define PREHEAT_1_TEMP_HOTEND 210 // DaHai: This is typically for PLA, set to your common temperatures
-#define PREHEAT_1_TEMP_BED     65
+#define PREHEAT_1_TEMP_HOTEND 190 // DaHai: This is typically for PLA, set to your common temperatures
+#define PREHEAT_1_TEMP_BED     55
 #define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255
 
 #define PREHEAT_2_TEMP_HOTEND 240 // DaHai: This is typically for ABS, set to your common temperatures 
